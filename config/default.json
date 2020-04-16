@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "jwtSecret": "admin",
+  "mongoUri": "mongodb+srv://admin:admin@cluster0-0aax2.gcp.mongodb.net/test?retryWrites=true&w=majority"
+}
