@@ -1,17 +1,19 @@
 const {Router} = require('express');
-const router = Router();
 const {check, validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
 const User = require('../models/User');
+const config = require('config');
+const router = Router();
 
-router.post('rigister',
+router.post(
+    '/register',
     [
         check('email', 'Wrong email...').isEmail(),
         check('password', 'Min length 6 symbol').isLength(6)
     ],
     async (req, res) => {
+        console.log('Body: ', req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -21,7 +23,7 @@ router.post('rigister',
                 })
             }
 
-            const { email, fullName, password } = req.body;
+            const { email, name, password } = req.body;
 
             const candidate = await User.findOne({email});
 
@@ -30,7 +32,7 @@ router.post('rigister',
             }
 
             const hashedPassword = await bcrypt.hash(password, 12);
-            const user = new User({ email, password: hashedPassword, fullName });
+            const user = new User({ email, password: hashedPassword, name });
 
             await user.save();
 
@@ -42,7 +44,8 @@ router.post('rigister',
     }
 );
 
-router.post('login',
+router.post(
+    '/login',
     [
         check('email', 'Write correct email').normalizeEmail().isEmail(),
         check('password', 'Write password').exists()
@@ -57,7 +60,7 @@ router.post('login',
                 })
             }
 
-            const { email, fullName, password } = req.body;
+            const { email, password } = req.body;
 
             const user = await User.findOne({email});
 

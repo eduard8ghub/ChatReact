@@ -1,0 +1,30 @@
+
+.user
+  padding: 0 15px 0 20px
+  &__avatar
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 40px
+    height: 40px
+    border-radius: 100%
+    background: linear-gradient(135deg, #00B3FF 0%, #9CEEFF 100%)
+    position: relative
+  &__letter-name
+    font-size: 18px
+    font-weight: bold
+    text-transform: uppercase
+    color: white
+  &__status
+    display: block
+    width: 8px
+    height: 8px
+    border-radius: 100%
+    border: 3px solid #FFFFFF
+    position: absolute
+    bottom: 0
+    right: 0
+    z-index: 999
+    box-sizing: content-box
+    &.--online
+      background-color: #00C980

@@ -1,0 +1,48 @@
+
+.home
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+
+.main
+  background-color: #ddd
+  
+.sidebar
+  width: 320px
+  height: 100vh
+  border-right: 1px solid red
+
+  &__top
+    padding: 22px 17px
+    border-bottom: 1px solid red
+    display: flex
+    justify-content: space-between
+    align-items: center
+    &__icon
+      font-size: 18px
+      color: #555555
+      width: 25px
+      height: 25px
+      display: flex
+      justify-content: center
+      align-items: center
+      cursor: pointer
+    p
+      width: 100%
+      margin: 0 0 0 7px
+      opacity: 0.6
+  &__search
+    width: 100%
+    padding: 22px 15px 25px 20px
+
+    span.ant-input-search.ant-input-affix-wrapper
+      border: none
+      height: 38px
+      background-color: #F7F8F9
+      border-radius: 2px
+    input
+      width: 100%
+      background-color: #F7F8F9
+    span.ant-input-suffix
+      display: flex
+      align-items: center
