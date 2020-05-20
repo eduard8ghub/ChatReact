@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {useHistory} from 'react-router-dom'
 import {User} from "../../components";
+import {MainContentContainer} from "../../container";
 
 import {UserSwitchOutlined, FormOutlined} from '@ant-design/icons';
 import {AuthContext} from "../../context/AuthContext";
@@ -36,7 +37,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="main">
-    main
+                <MainContentContainer />
             </div>
         </div>
     );
