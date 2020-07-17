@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {Form, Input, Button} from 'antd';
 
 import './Login.sass';
@@ -74,6 +74,3 @@ const Login = () => {
 };
 
 export default Login;
-// 100.70.199.81
-// 255.255.254.0
-// 100.70.199.1

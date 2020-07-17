@@ -1,0 +1,58 @@
+<article class="item-wrapper catalog-filters-card --point-clickable" data-service-id="${data.id}">
+    <a href="${data.serviceable.service_url}${getUrlParamsString()}" class="item-wrapper__link">
+        <div class="tours__list_item">
+            <div class="item__top">
+                <div class="item__top__slider">
+                    <div class="item__top__slider_img-wrapp item__slider">
+                        ${photos.map(itm => `
+                        <div class="adventure-slider-wrap">
+                            <img class="item__top__slider_img-wrapp__image" src="${image_cached(itm.path, 'medium')}"
+                                 alt="${data.serviceable.name}">
+                        </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ${data.serviceable.reviews_count >= this.minReviewsCount ? `
+                <div class="item__top_note" style="color: #191919">${data.serviceable.average_rating}</div>
+                ` : ''}
+                <button
+                        class="item__instant-preview"
+                        data-toggle="modal"
+                        data-target="#instant-preview"
+                        data-service-id="${data.id}"
+                >
+                    <svg width="14" height="10" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="item__instant-preview__eye-body"
+                              d="M12 1.4375C5.55 1.4375 0.9375 8 0.9375 8C0.9375 8 5.55 14.5625 12 14.5625C18.45 14.5625 23.0625 8 23.0625 8C23.0625 8 18.45 1.4375 12 1.4375Z"
+                              stroke="#FCFCFC" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path class="item__instant-preview__eye-circle"
+                              d="M12 11.5625C14.0711 11.5625 15.75 9.88357 15.75 7.8125C15.75 5.74143 14.0711 4.0625 12 4.0625C9.92893 4.0625 8.25 5.74143 8.25 7.8125C8.25 9.88357 9.92893 11.5625 12 11.5625Z"
+                              fill="#FCFCFC"/>
+                    </svg>
+                    ${quickViewText({ className: 'item__instant-preview_quick-view-text' })}
+                </button>
+            </div>
+            <div class="item__bottom">
+                <div class="item__bottom_group">
+                    <h3 class="item__bottom_title">${data.serviceable.name}</h3>
+                    <p class="item__bottom_text">${data.serviceable.description}</p>
+                </div>
+                <div class="item__bottom_buttons">
+                    <div
+                            class="trom-no-button catalog-filters-map-point-link"
+                            data-lat="${data.serviceable.location_lat || data.serviceable.meeting_lat}"
+                            data-lng="${data.serviceable.location_lng || data.serviceable.meeting_lng}"
+                    >
+                        <svg></svg>
+                        <p class="trom-no-button__text">${data.serviceable.meeting_place || locationName}</p>
+                    </div>
+                    <label class="like-button">
+                        <input type="checkbox" class="favourite-input" data-service-id="${data.id}">
+                        <svg></svg>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </a>
+</article>

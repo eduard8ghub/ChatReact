@@ -13,7 +13,7 @@ router.post(
         check('password', 'Min length 6 symbol').isLength(6)
     ],
     async (req, res) => {
-        console.log('Body: ', req.body);
+        // console.log('Body: ', req.body);
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -36,7 +36,7 @@ router.post(
 
             await user.save();
 
-            res.status(201).json({ message: 'User was registration successful.' })
+            res.status(201).json({ message: 'Chat was registration successful.' })
 
         } catch (e) {
             res.status(500).json({ message: 'Something wrong with server, try again pleas.' })

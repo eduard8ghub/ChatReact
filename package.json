@@ -13,11 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "classnames": "^2.2.6",
     "config": "^3.3.1",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.9"
+    "mongoose": "^5.9.9",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-connect": "^10.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
