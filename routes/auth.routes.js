@@ -79,8 +79,7 @@ router.post(
                 config.get('jwtSecret'),
                 { expiresIn: '1h' }
             );
-
-            res.json({ token, userId: user.id })
+            res.json({ token, userId: user.id, name: user.name })
 
         } catch (e) {
             res.status(500).json({ message: 'Something wrong with server, try again pleas.' })

@@ -10,6 +10,7 @@ import App from './App';
 
 import './styles/index.sass';
 
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunkMiddleware)

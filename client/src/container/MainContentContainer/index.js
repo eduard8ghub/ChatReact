@@ -1,16 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {DialogTopLine, UserMessage} from "../../components";
+import {connect} from "react-redux";
+import {WrapperInputTextContainer} from "../../container";
 
-const MainContentContainer = () => {
+const MainContentContainer = (props) => {
+    const [openChat, setOpenChat] = useState(null);
+
+    useEffect(() => {
+        setOpenChat(props.openChat)
+    }, [props.openChat])
 
     return (
         <>
-            <DialogTopLine/>
+            <DialogTopLine openChat={openChat}/>
             <div className="wrapper-dialog" style={{padding: "30px 35px"}}>
-                <UserMessage/>
+                {openChat ?
+                    <UserMessage/> :
+                    <h3 style={{textAlign: "center", marginTop: "50px", fontSize: "32px"}}>Select the chat</h3>
+                    }
+                <WrapperInputTextContainer />
             </div>
         </>
     );
 };
 
-export default MainContentContainer;
+const mapStateToProps = ({chats}) => ({
+    openChat: chats.openChat
+})
+
+export default connect(mapStateToProps)(MainContentContainer);

@@ -7,12 +7,11 @@ import {useAuth} from "./hooks/auth.hook";
 
 
 function App() {
-    const {token, userId, login, logout} = useAuth();
+    const {token, userId, userName, login, logout} = useAuth();
     const isAuthenticated = !!token;
     const routers = useRoutes(isAuthenticated);
-
     return (
-        <AuthContext.Provider value={{token, userId, login, logout}}>
+        <AuthContext.Provider value={{token, userId, userName, login, logout}}>
             <Router>
                 <div className="wrapper-app">
                     {routers}

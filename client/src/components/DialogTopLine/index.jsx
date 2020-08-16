@@ -15,7 +15,7 @@ const DialogTopLine = ({openChat}) => {
     return (
         <div className="top-line">
             {openChat &&
-            <div className="top-line__title">Гай Юлий Цезарь</div>
+            <div className="top-line__title">{openChat && openChat.title}</div>
             }
 
 

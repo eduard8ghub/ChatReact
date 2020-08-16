@@ -5,6 +5,8 @@ const config = require('config');
 const auth = require('../middleware/auth.middleware');
 const router = Router();
 
+
+
 router.post('/new',
     async (req, res) => {
         try {
@@ -33,6 +35,7 @@ router.get('/',
     async (req, res) => {
         try {
             const chats = await NewChat.find();
+
              await res.json(chats);
 
         } catch (e) {

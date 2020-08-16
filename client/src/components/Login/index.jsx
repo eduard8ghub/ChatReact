@@ -10,12 +10,10 @@ import {AuthContext} from "../../context/AuthContext";
 const Login = () => {
     const auth = useContext(AuthContext);
     const {request, error, clearError} = useHttp();
-
-
     const onFinish = async values => {
         try {
             const data = await request('/api/auth/login', 'POST', {...values});
-            auth.login(data.token, data.userId);
+            auth.login(data.token, data.userId, data.name);
         } catch (e) {
             console.log(e);
         }

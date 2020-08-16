@@ -3,12 +3,16 @@ import {Chat} from "../../components";
 import {useHttp} from "../../hooks/http.hook";
 import {Spin} from "antd";
 import {connect} from "react-redux";
-import {getChats} from "../../store/Chats/action";
+import {getChats, getOpenChat} from "../../store/Chats/action";
+import {useAuth} from "../../hooks/auth.hook";
+
+import socket from "../../core/soket";
 
 const ChatsContainer = (props) => {
     const [showChats, setShowChats] = useState([]);
     const [selectedChat, setSelectedChat] = useState(null);
     const {loading, request} = useHttp();
+    const {userId, userName} = useAuth();
 
     const asyncGetChats = async () => {
         return  await request('/api/chat', 'GET');
@@ -31,7 +35,8 @@ const ChatsContainer = (props) => {
 
     const setOpenChat = (e) => {
         setSelectedChat(e);
-        console.log(e);
+        props.getOpenChat(e);
+        socket.emit('userJoined', userId, data => {})
     };
 
     return (
@@ -54,4 +59,4 @@ const mapStateToProps = ({chats}) => ({
     findChats: chats.findChats
 });
 
-export default connect(mapStateToProps, {getChats})(ChatsContainer);
+export default connect(mapStateToProps, {getChats, getOpenChat})(ChatsContainer);
